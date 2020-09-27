@@ -1,0 +1,22 @@
+extends layout
+
+block content
+    h1 #{title}
+    
+    mixin produto(nome, preco)
+        div.divProduto
+            h3.tituloProduto= nome
+            br
+            img.fotoProduto(src="images/produto1.webp", alt="Cadeira Gamer")
+            br
+            span.precoReal R$#{preco}
+            br
+            button.comprarProduto Comprar
+    
+    div.produtos
+        each produto in produtos
+            +produto(produto.nome, produto.preco)
+    
+
+    script(type="text/javascript" src="https://stc.sandbox.pagseguro.uol.com.br/pagseguro/api/v2/checkout/pagseguro.directpayment.js")
+
